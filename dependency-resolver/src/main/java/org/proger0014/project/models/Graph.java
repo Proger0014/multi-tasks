@@ -8,14 +8,14 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Graph {
-    private final Set<Edge> edges;
+    private final Set<Vertex> vertexSet;
 
-    public Graph(Set<Edge> edges) {
-        this.edges = edges;
+    public Graph(Set<Vertex> vertexSet) {
+        this.vertexSet = vertexSet;
     }
 
-    public Set<Edge> getEdges() {
-        return edges;
+    public Set<Vertex> getVertexSet() {
+        return vertexSet;
     }
 
     public static class Edge implements Iterable<Dependency> {
@@ -102,13 +102,19 @@ public class Graph {
 
     public static class Vertex {
         private final Set<Edge> edges;
+        private final boolean isRoot;
 
-        public Vertex(Set<Edge> edges) {
+        public Vertex(Set<Edge> edges, boolean isRoot) {
             this.edges = edges;
+            this.isRoot = isRoot;
         }
 
         public Set<Edge> getEdges() {
             return edges;
+        }
+
+        public boolean isRoot() {
+            return isRoot;
         }
 
         @Override
