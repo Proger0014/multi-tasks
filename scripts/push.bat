@@ -1,15 +1,17 @@
 @echo off
 
+set path=%~dp0
+
 echo push to github
 
-./github-config.bat
+CALL %path%\github-config.bat
 
-git push -u origin main
+"%GIT%"\git.exe push -u origin main
 
 echo push to gitlab
 
-./gitlab-config.bat
+CALL %path%\gitlab-config.bat
 
-git push -u origin main
+"%GIT%"\git.exe push -u origin main
 
 echo success
