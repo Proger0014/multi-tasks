@@ -10,16 +10,7 @@ public final class TextFileDependencyResourceTestUtils {
     private static final String VALID_PATH_BASE = "valid";
 
     public static Map.Entry<String, Set<Dependency.Raw>> getValidData() {
-        String pathOfValid = "";
-
-        try {
-            pathOfValid = Objects.requireNonNull(TextFileDependencyResourceTestUtils.class
-                            .getClassLoader()
-                            .getResource(VALID_PATH_BASE))
-                    .toURI()
-                    .toString();
-        } catch (Exception ignored) {
-        }
+        String pathOfValid = getPathBase(VALID_PATH_BASE);
 
         Set<Dependency.Raw> set = new HashSet<>();
 
@@ -44,5 +35,19 @@ public final class TextFileDependencyResourceTestUtils {
         String absolutePathToBase = Path.of(URI.create(base)).toString();
 
         return Path.of(absolutePathToBase, file).toString();
+    }
+
+    private static String getPathBase(String base) {
+        String pathBase = "";
+
+        try {
+            pathBase = Objects.requireNonNull(TextFileDependencyResourceTestUtils.class
+                            .getClassLoader()
+                            .getResource(VALID_PATH_BASE))
+                    .toURI()
+                    .toString();
+        } catch (Exception ignored) { }
+
+        return pathBase;
     }
 }
