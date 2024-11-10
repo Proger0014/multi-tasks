@@ -1,6 +1,7 @@
 package org.proger0014.project.utils;
 
 import java.util.Collection;
+import java.util.function.Supplier;
 
 public final class HashCodeBuilder {
     private int prime = 1;
@@ -20,6 +21,14 @@ public final class HashCodeBuilder {
 
     public HashCodeBuilder initResult(int init) {
         this.result = init;
+
+        return this;
+    }
+
+    public HashCodeBuilder append(Supplier<Object> objectSupplier) {
+        try {
+            append(objectSupplier.get());
+        } catch (NullPointerException ignored) { }
 
         return this;
     }
