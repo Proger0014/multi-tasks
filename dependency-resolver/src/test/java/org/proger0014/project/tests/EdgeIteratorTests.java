@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EdgeIteratorTest {
+public class EdgeIteratorTests {
 
     @Test
     void iterateForward_shouldReturnDistinctListOf6ItemsInForwardOrder() {
